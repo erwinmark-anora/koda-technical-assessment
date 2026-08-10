@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Contracts\ProjectRepositoryInterface;
+use App\Repositories\ProjectRepository;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
@@ -10,6 +12,15 @@ use Illuminate\Validation\Rules\Password;
 
 class AppServiceProvider extends ServiceProvider
 {
+    /**
+     * The container bindings that satisfy the application's abstractions.
+     *
+     * @var array<class-string, class-string>
+     */
+    public array $bindings = [
+        ProjectRepositoryInterface::class => ProjectRepository::class,
+    ];
+
     /**
      * Register any application services.
      */

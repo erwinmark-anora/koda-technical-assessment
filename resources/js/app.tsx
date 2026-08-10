@@ -14,6 +14,10 @@ createInertiaApp({
         switch (true) {
             case name === 'welcome':
                 return null;
+            // The tracker is public, so it brings its own shell rather than
+            // the authenticated app layout.
+            case name.startsWith('projects/'):
+                return null;
             case name.startsWith('auth/'):
                 return AuthLayout;
             case name.startsWith('settings/'):
